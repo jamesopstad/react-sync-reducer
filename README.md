@@ -1,6 +1,6 @@
 # React Conducer
 
-A simple and tiny library for creating reducers that can be efficiently accessed via context.
+A simple and tiny library for creating reducers that can be efficiently accessed via context. Type-safe and concurrent-safe.
 
 ## Installation
 
@@ -10,7 +10,7 @@ npm install react-conducer
 
 ## Documentation
 
-### Call the createReducer function outside of your React component tree
+### Call the createReducer function outside of your React components
 
 ```tsx
 import { createReducer } from 'react-conducer';
