@@ -10,7 +10,7 @@ npm install react-conducer
 
 ## Documentation
 
-### Create the Reducer component and hooks outside of your React component
+### Call the createReducer function outside of your React component tree
 
 ```tsx
 import { createReducer } from 'react-conducer';
@@ -42,7 +42,7 @@ const { Reducer, useDispatch, useSelector } = createReducer(
 );
 ```
 
-### Wrap your components with the Reducer and provide the initial state
+### Wrap your child components with the returned Reducer component and provide the initial state
 
 ```tsx
 <Reducer initialState={{ value: 0 }}>
@@ -51,7 +51,7 @@ const { Reducer, useDispatch, useSelector } = createReducer(
 </Reducer>
 ```
 
-### Use the useDispatch and useSelector hooks in your components
+### Use the returned useDispatch and useSelector hooks in your child components
 
 ```tsx
 function DispatchComponent() {
