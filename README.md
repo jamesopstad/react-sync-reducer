@@ -45,10 +45,14 @@ const { Reducer, useDispatch, useSelector } = createReducer(
 ### Wrap your child components with the returned Reducer component and provide the initial state
 
 ```tsx
-<Reducer initialState={{ value: 0 }}>
-  <DispatchComponent />
-  <SelectorComponent />
-</Reducer>
+function Component() {
+  return (
+    <Reducer initialState={{ value: 0 }}>
+      <DispatchComponent />
+      <SelectorComponent />
+    </Reducer>
+  );
+}
 ```
 
 ### Use the returned useDispatch and useSelector hooks in your child components
@@ -61,7 +65,7 @@ function DispatchComponent() {
     <>
       <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
       <button onClick={() => dispatch({ type: 'setValue', payload: 99 })}>
-        Set Value
+        Set Value to 99
       </button>
     </>
   );
@@ -70,6 +74,6 @@ function DispatchComponent() {
 function SelectorComponent() {
   const value = useSelector((state) => state.value);
 
-  return <h1>The current value is: {value}</h1>;
+  return <p>The current value is: {value}</p>;
 }
 ```
