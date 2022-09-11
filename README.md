@@ -17,28 +17,28 @@ import { createReducer } from 'react-conducer';
 import type { Action } from 'react-conducer';
 
 interface State {
-	value: number;
+  value: number;
 }
 
 type Actions = Action<'increment'> | Action<'setValue', number>;
 
 const { Reducer, useDispatch, useSelector } = createReducer(
-	(state: State, action: Actions) => {
-		switch (action.type) {
-			case 'increment': {
-				return {
-					...state,
-					value: state.value + 1
-				};
-			}
-			case 'setValue': {
-				return {
-					...state,
-					value: action.payload
-				};
-			}
-		}
-	}
+  (state: State, action: Actions) => {
+    switch (action.type) {
+      case 'increment': {
+        return {
+          ...state,
+          value: state.value + 1
+        };
+      }
+      case 'setValue': {
+        return {
+          ...state,
+          value: action.payload
+        };
+      }
+    }
+  }
 );
 ```
 
@@ -46,8 +46,8 @@ const { Reducer, useDispatch, useSelector } = createReducer(
 
 ```tsx
 <Reducer initialState={{ value: 0 }}>
-	<DispatchComponent />
-	<SelectorComponent />
+  <DispatchComponent />
+  <SelectorComponent />
 </Reducer>
 ```
 
@@ -55,21 +55,21 @@ const { Reducer, useDispatch, useSelector } = createReducer(
 
 ```tsx
 function DispatchComponent() {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	return (
-		<>
-			<button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
-			<button onClick={() => dispatch({ type: 'setValue', payload: 99 })}>
-				Set Value
-			</button>
-		</>
-	);
+  return (
+    <>
+      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'setValue', payload: 99 })}>
+        Set Value
+      </button>
+    </>
+  );
 }
 
 function SelectorComponent() {
-	const value = useSelector((state) => state.value);
+  const value = useSelector((state) => state.value);
 
-	return <h1>The current value is: {value}</h1>;
+  return <h1>The current value is: {value}</h1>;
 }
 ```
