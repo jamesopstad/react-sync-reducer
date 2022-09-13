@@ -13,8 +13,8 @@ npm install react-sync-reducer
 ### Call the `createReducer` function outside of your React components
 
 ```tsx
-import { createReducer } from 'react-conducer';
-import type { Action } from 'react-conducer';
+import { createReducer } from 'react-sync-reducer';
+import type { Action } from 'react-sync-reducer';
 
 interface State {
   value: number;
