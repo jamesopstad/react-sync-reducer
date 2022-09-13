@@ -25,7 +25,6 @@ export class Store<TState extends State, TAction extends Action> {
 	}
 
 	getSnapshot() {
-		console.log('here')
 		return this.state;
 	}
 }

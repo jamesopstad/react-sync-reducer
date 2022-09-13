@@ -1,6 +1,6 @@
 # React Sync Reducer
 
-A simple and tiny library for creating reducers that can be efficiently accessed via context. Type-safe and compatible with Concurrent React.
+A library for creating reducers that can be efficiently accessed via context. Type-safe and compatible with Concurrent React.
 
 ## Installation
 
