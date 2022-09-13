@@ -1,9 +1,9 @@
 import type { State, Action, Reducer } from './types';
 
 export class Store<TState extends State, TAction extends Action> {
-	reducer: Reducer<TState, TAction>;
-	state: TState;
-	subscribers = new Set<() => void>();
+	private reducer: Reducer<TState, TAction>;
+	private state: TState;
+	private subscribers = new Set<() => void>();
 
 	constructor(reducer: Reducer<TState, TAction>, initialState: TState) {
 		this.reducer = reducer;
@@ -25,6 +25,7 @@ export class Store<TState extends State, TAction extends Action> {
 	}
 
 	getSnapshot() {
+		console.log('here')
 		return this.state;
 	}
 }

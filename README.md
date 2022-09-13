@@ -1,16 +1,16 @@
-# React Conducer
+# React Sync Reducer
 
-A simple and tiny library for creating reducers that can be efficiently accessed via context. Type-safe and concurrent-safe.
+A simple and tiny library for creating reducers that can be efficiently accessed via context. Type-safe and compatible with Concurrent React.
 
 ## Installation
 
 ```sh
-npm install react-conducer
+npm install react-sync-reducer
 ```
 
 ## Documentation
 
-### Call the createReducer function outside of your React components
+### Call the `createReducer` function outside of your React components
 
 ```tsx
 import { createReducer } from 'react-conducer';
@@ -42,7 +42,7 @@ const { Reducer, useDispatch, useSelector } = createReducer(
 );
 ```
 
-### Wrap your child components with the returned Reducer component and provide the initial state
+### Wrap your child components with the returned `Reducer` component and provide the initial state
 
 ```tsx
 function Component() {
@@ -55,7 +55,7 @@ function Component() {
 }
 ```
 
-### Use the returned useDispatch and useSelector hooks in your child components
+### Use the returned `useDispatch` and `useSelector` hooks in your child components
 
 ```tsx
 function DispatchComponent() {
