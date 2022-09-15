@@ -1,7 +1,6 @@
 {
 	"name": "react-sync-reducer",
-	"private": true,
-	"version": "0.0.0",
+	"version": "0.1.1",
 	"description": "A library for creating reducers that can be efficiently accessed via context",
 	"keywords": [
 		"react",
@@ -11,6 +10,10 @@
 		"store"
 	],
 	"author": "James Opstad",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jamesopstad/react-sync-reducer"
+	},
 	"license": "MIT",
 	"type": "module",
 	"files": [
