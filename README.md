@@ -2,6 +2,10 @@
 
 A library for creating reducers that can be efficiently accessed via context. Type-safe and compatible with Concurrent React.
 
+## Motivation
+
+In React applications, managing state by combining `useReducer` and `useContext` can sometimes lead to performance issues. This is because each context-consuming component is re-rendered whenever the context value changes. React Sync Reducer can be used to solve this issue.
+
 ## Installation
 
 ```sh
