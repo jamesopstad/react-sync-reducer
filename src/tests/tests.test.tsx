@@ -74,12 +74,6 @@ describe('Client-side rendered', () => {
 		expect(getValue()).toBe('1');
 	});
 
-	it('should update the state in response to another action', () => {
-		const { incrementButton, getValue } = prepare();
-		fireEvent.click(incrementButton);
-		expect(getValue()).toBe('1');
-	});
-
 	it('should update the state in response to an action with a payload', () => {
 		const { setValueButton, getValue } = prepare();
 		fireEvent.click(setValueButton);
