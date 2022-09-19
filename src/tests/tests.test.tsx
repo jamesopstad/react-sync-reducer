@@ -1,7 +1,8 @@
+import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, it, expect } from 'vitest';
 import { render, fireEvent } from '@testing-library/react';
-import { createReducer } from '.';
-import type { Action } from '.';
+import { createReducer } from '../createReducer';
+import type { Action } from '../types';
 
 interface State {
 	value: number;
@@ -46,7 +47,7 @@ function SelectorComponent() {
 	return <h1>{value}</h1>;
 }
 
-describe('createReducer', () => {
+function prepare() {
 	const { getByRole } = render(
 		<Reducer initialState={{ value: 0 }}>
 			<DispatchComponent />
@@ -54,21 +55,46 @@ describe('createReducer', () => {
 		</Reducer>
 	);
 
-	const increment = getByRole('button', { name: 'Increment' });
-	const setValue = getByRole('button', { name: 'Set Value' });
-	const getValue = () => getByRole('heading').textContent;
+	return {
+		incrementButton: getByRole('button', { name: 'Increment' }),
+		setValueButton: getByRole('button', { name: 'Set Value' }),
+		getValue: () => getByRole('heading').textContent
+	};
+}
 
+describe('Client-side rendered', () => {
 	it('should render the initial state', () => {
+		const { getValue } = prepare();
 		expect(getValue()).toBe('0');
 	});
 
 	it('should update the state in response to an action', () => {
-		fireEvent.click(increment);
+		const { incrementButton, getValue } = prepare();
+		fireEvent.click(incrementButton);
+		expect(getValue()).toBe('1');
+	});
+
+	it('should update the state in response to another action', () => {
+		const { incrementButton, getValue } = prepare();
+		fireEvent.click(incrementButton);
 		expect(getValue()).toBe('1');
 	});
 
 	it('should update the state in response to an action with a payload', () => {
-		fireEvent.click(setValue);
+		const { setValueButton, getValue } = prepare();
+		fireEvent.click(setValueButton);
 		expect(getValue()).toBe('99');
+	});
+});
+
+describe('Server-side rendered', () => {
+	const markup = renderToStaticMarkup(
+		<Reducer initialState={{ value: 33 }}>
+			<SelectorComponent />
+		</Reducer>
+	);
+
+	it('should render the initial state', () => {
+		expect(markup).toBe('<h1>33</h1>');
 	});
 });
