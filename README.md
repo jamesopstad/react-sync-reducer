@@ -46,7 +46,7 @@ const { ReducerProvider, useDispatch, useSelector } = createReducer(
 );
 ```
 
-### Wrap your child components with the returned `ReducerProvider` and provide the initial state
+### Wrap your child components with the returned `ReducerProvider` and set the initial state
 
 ```tsx
 function Component() {
