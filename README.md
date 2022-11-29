@@ -26,7 +26,7 @@ interface State {
 
 type Actions = Action<'increment'> | Action<'setValue', number>;
 
-const { Reducer, useDispatch, useSelector } = createReducer(
+const { ReducerProvider, useDispatch, useSelector } = createReducer(
   (state: State, action: Actions) => {
     switch (action.type) {
       case 'increment': {
@@ -46,15 +46,15 @@ const { Reducer, useDispatch, useSelector } = createReducer(
 );
 ```
 
-### Wrap your child components with the returned `Reducer` component and provide the initial state
+### Wrap your child components with the returned `ReducerProvider` and provide the initial state
 
 ```tsx
 function Component() {
   return (
-    <Reducer initialState={{ value: 0 }}>
+    <ReducerProvider initialState={{ value: 0 }}>
       <DispatchComponent />
       <SelectorComponent />
-    </Reducer>
+    </ReducerProvider>
   );
 }
 ```

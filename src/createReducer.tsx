@@ -8,7 +8,7 @@ export function createReducer<TState extends State, TAction extends Action>(
 ) {
 	const StoreContext = createContext({} as Store<TState, TAction>);
 
-	const Reducer = (props: { initialState: TState; children?: any }) => {
+	const ReducerProvider = (props: { initialState: TState; children?: any }) => {
 		const [store] = useState(() => new Store(reducer, props.initialState));
 
 		return (
@@ -38,5 +38,5 @@ export function createReducer<TState extends State, TAction extends Action>(
 		return state;
 	};
 
-	return { Reducer, useDispatch, useSelector };
+	return { ReducerProvider, useDispatch, useSelector };
 }

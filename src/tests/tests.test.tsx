@@ -9,7 +9,7 @@ interface State {
 }
 type Actions = Action<'increment'> | Action<'setValue', number>;
 
-const { Reducer, useDispatch, useSelector } = createReducer(
+const { ReducerProvider, useDispatch, useSelector } = createReducer(
 	(state: State, action: Actions) => {
 		switch (action.type) {
 			case 'increment': {
@@ -49,10 +49,10 @@ function SelectorComponent() {
 
 function prepare() {
 	const { getByRole } = render(
-		<Reducer initialState={{ value: 0 }}>
+		<ReducerProvider initialState={{ value: 0 }}>
 			<DispatchComponent />
 			<SelectorComponent />
-		</Reducer>
+		</ReducerProvider>
 	);
 
 	return {
@@ -83,9 +83,9 @@ describe('Client-side rendered', () => {
 
 describe('Server-side rendered', () => {
 	const markup = renderToStaticMarkup(
-		<Reducer initialState={{ value: 33 }}>
+		<ReducerProvider initialState={{ value: 33 }}>
 			<SelectorComponent />
-		</Reducer>
+		</ReducerProvider>
 	);
 
 	it('should render the initial state', () => {
